@@ -1,2 +1,0 @@
-RectPerimetr: 40.000000
-RectSquare: 100.000000

@@ -38,3 +38,16 @@ struct ID3v24Header
 #pragma pack(pop) // восстановить предыдущую границу упаковки
 
 ID3v24Header* ReadHeader(const char* FileName);
+
+void FileWriteInt();
+void TestFileWriteBin(const char* FileName, int Number);
+void FileWriteIntBin();
+int* ReadBINFileInt(const char* FileName, int& FileLen);
+void Cout_Function(std::string Text, int* Array, int iLen);
+int* ReadSymbolFileInt(const char* FileName, int& FileLen);
+
+void TestFileWriteBinFloat(const char* FileName, float Number);
+void FileWriteFloat();
+void FileWriteFloatBin();
+float* ReadBINFileFloat(const char* FileName, int& FileLen);
+float* ReadSymbolFileFloat(const char* FileName, int& FileLen);

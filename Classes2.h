@@ -124,7 +124,7 @@ public:
 };
 
 
-class Intermediate :public Monkey
+class Intermediate : public Monkey
 {
 private:
 
@@ -151,7 +151,7 @@ public:
 };
 
 // класс наследник (дочерний класс)
-class Homosapiens :public Intermediate
+class Homosapiens : public Intermediate
 {
 private:
 
@@ -258,4 +258,30 @@ public:
 class NextClass : public BaseClass1, public BaseClass2
 {
 
+};
+
+class ShowNoExplicit
+{
+public:
+
+	ShowNoExplicit() {}
+
+	ShowNoExplicit(int x) {}
+
+	ShowNoExplicit(int x, int y) {}
+
+	operator bool() { return true; }
+};
+
+class ShowWithExplicit
+{
+public:
+
+	explicit ShowWithExplicit() {}
+
+	explicit ShowWithExplicit(int x) {}
+
+	explicit ShowWithExplicit(int x, int y) {}
+
+	explicit operator bool() { return true; }
 };

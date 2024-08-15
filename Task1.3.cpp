@@ -611,3 +611,35 @@ void Task1_3_12()
 		cout << "[" << i << "] = " << iData[i] << "\n";
 	}
 }
+
+
+// Test 2D array
+///////////////////////////////////
+
+//x x x
+//x x x
+int GetOfset(int y, int x, int w)
+{
+	return y * w + x;
+}
+
+void TestArray2D()
+{
+	const int w = 5; // ширина массива
+	const int h = 10; // высота массива
+
+	//Вариант #1
+	int Array2D1[h][w]{};
+	Array2D1[0][1] = 10;
+
+	//Вариант #2
+	int* Array2D2 = new int[w * h]{};
+	int ofs = GetOfset(0, 1, w);
+	Array2D2[ofs] = 10;
+	delete[] Array2D2;
+
+	//Вариант #3
+	auto Array2D3 = new int[h][w]{};
+	Array2D3[0][1] = 10;
+	delete[] Array2D3;
+}

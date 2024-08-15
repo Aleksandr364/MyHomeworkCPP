@@ -24,6 +24,7 @@
     <ProjectGuid>{9e8888f7-695a-42ab-b36c-eabf9c318526}</ProjectGuid>
     <RootNamespace>Task1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>MyTasksCPP</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -131,17 +132,28 @@
   <ItemGroup>
     <ClCompile Include="Classes1.cpp" />
     <ClCompile Include="Classes2.h" />
+    <ClCompile Include="HashFunc.cpp" />
+    <ClCompile Include="SQLExample.cpp" />
+    <ClCompile Include="Exceptions.cpp" />
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="NewFileCPP.cpp" />
-    <ClCompile Include="TestFunc1.cpp" />
+    <ClCompile Include="RAII.cpp" />
+    <ClCompile Include="RAII.h" />
+    <ClCompile Include="Task2.1.cpp" />
     <ClCompile Include="Task1.2.cpp" />
     <ClCompile Include="Task1.3.cpp" />
     <ClCompile Include="Task1.1.cpp" />
+    <ClCompile Include="Test_DynArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Classes1.h" />
     <ClInclude Include="ClassesTask1.h" />
+    <ClInclude Include="DynArray.h" />
+    <ClInclude Include="DynArrayExt.h" />
+    <ClInclude Include="HashTable.h" />
+    <ClInclude Include="MyExceptions_for_DynArray.h" />
+    <ClInclude Include="Exceptions.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="NewFileH.h" />
     <ClInclude Include="Task1.h" />

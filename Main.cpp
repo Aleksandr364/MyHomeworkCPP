@@ -6,7 +6,30 @@
 #include "ClassesTask1.h"
 #include "Global.h"
 #include "NewFileH.h"
+#include "Exceptions.h"
+#include "RAII.h"
+#include "DynArray.h"
+#include "HashTable.h"
 
+using namespace RAII;
+
+int Array_1[10]; // глобальный массив - глобальная память
+
+void Func_1()
+{
+	// int Array[] == int*Array
+	int Array_2[10]{ 0 }; // локальный (стековый) массив - автоматическая память
+	int* Array_3 = new int[10] {0}; // heap == динамическая память == куча
+}
+
+int* Func_2(int iLen)
+{
+	int* Array = new int[iLen] {0};
+
+	for (int i = 0; i < iLen; i++) Array[i] = i + 1;
+
+	return Array;
+}
 
 // Статическая глобальная переменная.
 static int iGlobalStatic = 10;
@@ -36,9 +59,51 @@ void Swap(int& x, int& y)
 	x = x ^ y;
 }
 
-// main()
-int main()
+// zero rule - правило нуля (не нужны конструкторы копирования: все работает автоматически)
+struct Example
 {
+	int x = 0;
+	float y = 0;
+	std::string text;
+
+	Example() = default;
+
+	Example(int x, float y, std::string text): x(x), y(y), text(text) {}
+};
+
+
+void TestExplicit()
+{
+	ShowNoExplicit object1 = 10;
+	bool val1 = object1;
+	ShowWithExplicit object2({(int)10.1});
+	bool val2 = (bool)object2;
+};
+
+uint32_t HashFunc(const char* text);
+
+// trailing type - хвостовой тип
+auto main() -> int
+
+//int main()
+{
+	std::cout << HashFunc("Hello!");
+	std::cout << HashFunc("Hello!2");
+	std::cout << HashFunc("chardff text");
+
+	HashTable hashTableObj;
+	hashTableObj.add("Hello!");
+	hashTableObj.add("Hello!2");
+	hashTableObj.add("chardff text");
+
+	TestExplicit();
+
+	TestArray2D();
+
+	Test_DynArray();
+
+	return 0;
+
 	//	// перенос объекта phone_book_1 класса Phone_Book_Item с помощью std::move()
 	//	// Phone_Book_Item phone_book_1 = std::move(TestMoveConstructor());
 
@@ -202,4 +267,43 @@ int main()
 	char* buffer = ReadBINFile("Tag.mp3", TagfileLen);
 
 	ID3v24Header* pID3v24Header = ReadHeader("Tag.mp3");
+
+	TestException();
+
+	TestColor(_ColorType::red);
+
+	Exceptions();
+
+	//TestSEH();
+
+	int value = 10;
+	float value2 = 12345 * 0.35784f;
+	std::cout << std::boolalpha;
+	std::cout << "\n" << isEven(value) << "\n";
+	std::cout << isEven2(value) << "\n";
+	std::cout << isEven3(10.0f) << "\n";
+
+	// выделение только "мантисы" - числа после запятой
+	std::cout << getM(value2) << "\n";
+	
+	// округление "вниз"
+	std::cout << int(value2) << "\n";
+
+	// округление к ближайшему
+	std::cout << int(value2+0.5f) << "\n";
+
+	std::cout << value2 << "\n";
+	std::cout << std::noboolalpha;
+
+
+
+
+	//int64_t iLen = 0x10'000'000;
+	//int64_t iTailLen = 0x1'000'000;
+
+	//ChronoTest(10, trimRight_simple1, iLen, iTailLen, "simple1");
+	//ChronoTest(10, trimRight_simple2, iLen, iTailLen, "simple2");
+	//ChronoTest(10, trimRight, iLen, iTailLen, "best");
+
+	
 }

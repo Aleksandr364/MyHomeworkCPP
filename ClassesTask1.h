@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #pragma once
 
 #include <iostream>
@@ -239,7 +240,7 @@ public:
 		// sprintf_s конвертирует спецификацию "..."  с переменными x1... в текстовый буфер (массив char)
 		sprintf_s(buffer, maxBuffLen, "%f, %f, %f, %f\n", x1, y1, x2, y2);
 
-		FileWriteInternal(FileName, buffer, strlen(buffer));
+		FileWriteInternal(FileName, buffer, (int)strlen(buffer));
 	}
 
 	void FileRead()

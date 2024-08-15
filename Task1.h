@@ -59,6 +59,9 @@ void ArrCyclicShiftRight(int*&, int);
 void Task1_3_12();
 
 
+void TestArray2D();
+
+
 
 void TestFunc_1();
 

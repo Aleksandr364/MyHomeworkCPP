@@ -221,3 +221,4 @@ ID3v24Header* ReadHeader(const char* FileName)
 
 	return pID3v24Header;
 }
+
