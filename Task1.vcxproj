@@ -150,7 +150,6 @@
     <ClInclude Include="Classes1.h" />
     <ClInclude Include="ClassesTask1.h" />
     <ClInclude Include="DynArray.h" />
-    <ClInclude Include="DynArrayExt.h" />
     <ClInclude Include="HashTable.h" />
     <ClInclude Include="MyExceptions_for_DynArray.h" />
     <ClInclude Include="Exceptions.h" />

@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include "Global.h"
 
-// Псевдоним типа std::pair<float, float>
+// РџСЃРµРІРґРѕРЅРёРј С‚РёРїР° std::pair<float, float>
 typedef std::pair<float, float> PairFloatType;
 
 
@@ -44,7 +44,7 @@ protected:
 		return x1 >= 0 && y1 >= 0 && x2 > x1 && y2 > y1;
 	}
 
-	// метод копирования
+	// РјРµС‚РѕРґ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 	void copyFrom(Rect& R)
 	{
 		x1 = R.x1;
@@ -53,7 +53,7 @@ protected:
 		y2 = R.y2;
 	}
 
-	// метод переноса
+	// РјРµС‚РѕРґ РїРµСЂРµРЅРѕСЃР°
 	void moveFrom(Rect&& From) noexcept
 	{
 		x1 = From.x1; From.x1 = 0;
@@ -66,51 +66,51 @@ protected:
 	{
 		FILE* file = nullptr;
 
-		// fopen_s открыть файл в режиме записи "а+" - append "если файла не существует, он создаётся", если файл не сможет открыть, выдает код ошибки
+		// fopen_s РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» РІ СЂРµР¶РёРјРµ Р·Р°РїРёСЃРё "Р°+" - append "РµСЃР»Рё С„Р°Р№Р»Р° РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚, РѕРЅ СЃРѕР·РґР°С‘С‚СЃСЏ", РµСЃР»Рё С„Р°Р№Р» РЅРµ СЃРјРѕР¶РµС‚ РѕС‚РєСЂС‹С‚СЊ, РІС‹РґР°РµС‚ РєРѕРґ РѕС€РёР±РєРё
 		errno_t err = fopen_s(&file, FileName, "a+");
 
 		if (err || !file) return;
 
-		// strlen(buffer) если длина буфера явно не задана, посчитать реальную длину буфера
+		// strlen(buffer) РµСЃР»Рё РґР»РёРЅР° Р±СѓС„РµСЂР° СЏРІРЅРѕ РЅРµ Р·Р°РґР°РЅР°, РїРѕСЃС‡РёС‚Р°С‚СЊ СЂРµР°Р»СЊРЅСѓСЋ РґР»РёРЅСѓ Р±СѓС„РµСЂР°
 		if (!buffLen) buffLen = (int)strlen(buffer);
 
-		// fwrite запись буфера в файл (второй аргумент всегда 1)
+		// fwrite Р·Р°РїРёСЃСЊ Р±СѓС„РµСЂР° РІ С„Р°Р№Р» (РІС‚РѕСЂРѕР№ Р°СЂРіСѓРјРµРЅС‚ РІСЃРµРіРґР° 1)
 		size_t realSize = fwrite(buffer, 1, buffLen, file);
 
-		// fclose(file) закрывает файл, тем самым освобождает дескриптор и выгружает внутренний буфер операционной системы на диск. 
+		// fclose(file) Р·Р°РєСЂС‹РІР°РµС‚ С„Р°Р№Р», С‚РµРј СЃР°РјС‹Рј РѕСЃРІРѕР±РѕР¶РґР°РµС‚ РґРµСЃРєСЂРёРїС‚РѕСЂ Рё РІС‹РіСЂСѓР¶Р°РµС‚ РІРЅСѓС‚СЂРµРЅРЅРёР№ Р±СѓС„РµСЂ РѕРїРµСЂР°С†РёРѕРЅРЅРѕР№ СЃРёСЃС‚РµРјС‹ РЅР° РґРёСЃРє. 
 		fclose(file);
 	}
 
 public:
 
-	// конструктор
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	Rect() = default;
 
-	// конструктор для задания всех координат
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ Р·Р°РґР°РЅРёСЏ РІСЃРµС… РєРѕРѕСЂРґРёРЅР°С‚
 	Rect(float x1, float y1, float x2, float y2)
 	{
 		SetCords(x1, y1, x2, y2);
 	}
 
-	// конструктор копирования (иллюстрация копирования компилятора) для const
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ (РёР»Р»СЋСЃС‚СЂР°С†РёСЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РєРѕРјРїРёР»СЏС‚РѕСЂР°) РґР»СЏ const
 	Rect(const Rect& From)
 	{
 		copyFrom((Rect&)From);
 	}
 
-	// конструктор копирования (иллюстрация копирования компилятора)
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ (РёР»Р»СЋСЃС‚СЂР°С†РёСЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РєРѕРјРїРёР»СЏС‚РѕСЂР°)
 	Rect(Rect& From)
 	{
 		copyFrom((Rect&)From);
 	}
 
-	// конструктор переноса
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРµСЂРµРЅРѕСЃР°
 	Rect(Rect&& From) noexcept
 	{
 		moveFrom((Rect&&)From);
 	}
 
-	// оператор копирования-присваивания
+	// РѕРїРµСЂР°С‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ-РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 	Rect& operator=(Rect& R)
 	{
 		if (&R == this) return *this;
@@ -120,7 +120,7 @@ public:
 		return *this;
 	}
 
-	// оператор перемещения-присваивания
+	// РѕРїРµСЂР°С‚РѕСЂ РїРµСЂРµРјРµС‰РµРЅРёСЏ-РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 	Rect& operator=(Rect&& From) noexcept
 	{
 		if (&From == this) return *this;
@@ -130,13 +130,13 @@ public:
 		return *this;
 	}
 
-	// "геттер"
+	// "РіРµС‚С‚РµСЂ"
 	std::tuple<float, float, float, float> GetCords()
 	{
 		return std::make_tuple(x1, y1, x2, y2);
 	}
 
-	// "сеттер"
+	// "СЃРµС‚С‚РµСЂ"
 	void SetCords(float x1, float y1, float x2, float y2)
 	{
 		Rect::x1 = x1;
@@ -146,7 +146,7 @@ public:
 	}
 
 
-	// перегрузка других операторов для класса Rect:
+	// РїРµСЂРµРіСЂСѓР·РєР° РґСЂСѓРіРёС… РѕРїРµСЂР°С‚РѕСЂРѕРІ РґР»СЏ РєР»Р°СЃСЃР° Rect:
 
 	Rect operator+(Rect& R)
 	{
@@ -174,7 +174,7 @@ public:
 	}
 
 
-	// функции для вычислений:
+	// С„СѓРЅРєС†РёРё РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёР№:
 
 	float GetH()
 	{
@@ -237,7 +237,7 @@ public:
 
 		char buffer[maxBuffLen]{};
 
-		// sprintf_s конвертирует спецификацию "..."  с переменными x1... в текстовый буфер (массив char)
+		// sprintf_s РєРѕРЅРІРµСЂС‚РёСЂСѓРµС‚ СЃРїРµС†РёС„РёРєР°С†РёСЋ "..."  СЃ РїРµСЂРµРјРµРЅРЅС‹РјРё x1... РІ С‚РµРєСЃС‚РѕРІС‹Р№ Р±СѓС„РµСЂ (РјР°СЃСЃРёРІ char)
 		sprintf_s(buffer, maxBuffLen, "%f, %f, %f, %f\n", x1, y1, x2, y2);
 
 		FileWriteInternal(FileName, buffer, (int)strlen(buffer));
@@ -258,11 +258,11 @@ public:
 		else printf("\nFile reading failed!\n");
 	}
 
-	// friend - ключевое слово, разрешающее доступ функции (или другому классу) к защищенным частям класса
+	// friend - РєР»СЋС‡РµРІРѕРµ СЃР»РѕРІРѕ, СЂР°Р·СЂРµС€Р°СЋС‰РµРµ РґРѕСЃС‚СѓРї С„СѓРЅРєС†РёРё (РёР»Рё РґСЂСѓРіРѕРјСѓ РєР»Р°СЃСЃСѓ) Рє Р·Р°С‰РёС‰РµРЅРЅС‹Рј С‡Р°СЃС‚СЏРј РєР»Р°СЃСЃР°
 	friend std::ostream& operator<<(std::ostream& Out, Rect& R);
 };
 
-// примеры перегрузки операторов ВНЕ тела класса для Rect:
+// РїСЂРёРјРµСЂС‹ РїРµСЂРµРіСЂСѓР·РєРё РѕРїРµСЂР°С‚РѕСЂРѕРІ Р’РќР• С‚РµР»Р° РєР»Р°СЃСЃР° РґР»СЏ Rect:
 
 Rect operator-(Rect& L, Rect& R)
 {
@@ -272,15 +272,15 @@ Rect operator-(Rect& L, Rect& R)
 	return Rect(Lx1 - Rx1, Ly1 - Ry1, Lx2 - Rx2, Ly2 - Ry2);
 }
 
-// перегруженный оператор потокового вывода ВНЕ тела класса для Rect:
+// РїРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ РїРѕС‚РѕРєРѕРІРѕРіРѕ РІС‹РІРѕРґР° Р’РќР• С‚РµР»Р° РєР»Р°СЃСЃР° РґР»СЏ Rect:
 std::ostream& operator<<(std::ostream& Out, Rect& R)
 {
 	auto [Rx1, Ry1, Rx2, Ry2] = R.GetCords();
 
-	// МОЖНО ТАК:
+	// РњРћР–РќРћ РўРђРљ:
 	return Out << Rx1 << ", " << Ry1 << ", " << Rx2 << ", " << Ry2 << "\n";
 
-	// МОЖНО И ТАК:
+	// РњРћР–РќРћ Р РўРђРљ:
 	// return Out << R.x1 << ", " << R.y1 << ", " << R.x2 << ", " << R.y2 << "\n";
 }
 
@@ -297,7 +297,7 @@ protected:
 		return x >= 0 && y >= 0 && r >= 0 && x - r >= 0 && y - r >= 0;
 	}
 
-	// метод копирования
+	// РјРµС‚РѕРґ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 	void copyFrom(Circle& R)
 	{
 		x = R.x;
@@ -305,7 +305,7 @@ protected:
 		r = R.r;
 	}
 
-	// метод переноса
+	// РјРµС‚РѕРґ РїРµСЂРµРЅРѕСЃР°
 	void moveFrom(Circle&& From) noexcept
 	{
 		x = From.x; From.x = 0;
@@ -315,35 +315,35 @@ protected:
 
 public:
 
-	// конструктор
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	Circle() = default;
 
-	// конструктор задания координат и радиуса
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р·Р°РґР°РЅРёСЏ РєРѕРѕСЂРґРёРЅР°С‚ Рё СЂР°РґРёСѓСЃР°
 	Circle(float x, float y, float r) :
 		x(x), y(y), r(r)
 	{
 		if (!checkCords()) throw 0;
 	}
 
-	// конструктор копирования (иллюстрация копирования компилятора) для const
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ (РёР»Р»СЋСЃС‚СЂР°С†РёСЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РєРѕРјРїРёР»СЏС‚РѕСЂР°) РґР»СЏ const
 	Circle(const Circle& From)
 	{
 		copyFrom((Circle&)From);
 	}
 
-	// конструктор копирования (иллюстрация копирования компилятора)
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ (РёР»Р»СЋСЃС‚СЂР°С†РёСЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РєРѕРјРїРёР»СЏС‚РѕСЂР°)
 	Circle(Circle& From)
 	{
 		copyFrom((Circle&)From);
 	}
 
-	// конструктор переноса
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРµСЂРµРЅРѕСЃР°
 	Circle(Circle&& From) noexcept
 	{
 		moveFrom((Circle&&)From);
 	}
 
-	// оператор копирования-присваивания
+	// РѕРїРµСЂР°С‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ-РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 	Circle& operator=(Circle& R)
 	{
 		if (&R == this) return *this;
@@ -353,7 +353,7 @@ public:
 		return *this;
 	}
 
-	// оператор перемещения-присваивания
+	// РѕРїРµСЂР°С‚РѕСЂ РїРµСЂРµРјРµС‰РµРЅРёСЏ-РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 	Circle& operator=(Circle&& From) noexcept
 	{
 		if (&From == this) return *this;
@@ -363,13 +363,13 @@ public:
 		return *this;
 	}
 
-	// "геттер"
+	// "РіРµС‚С‚РµСЂ"
 	std::tuple<float, float, float> GetCordsAndRadius()
 	{
 		return std::make_tuple(x, y, r);
 	}
 
-	// "сеттер"
+	// "СЃРµС‚С‚РµСЂ"
 	void SetCordsAndRadius(float x, float y, float r)
 	{
 		Circle::x = x;
@@ -378,7 +378,7 @@ public:
 	}
 
 
-	// перегрузка других операторов для класса Circle:
+	// РїРµСЂРµРіСЂСѓР·РєР° РґСЂСѓРіРёС… РѕРїРµСЂР°С‚РѕСЂРѕРІ РґР»СЏ РєР»Р°СЃСЃР° Circle:
 
 	Circle operator+(Circle& R)
 	{
@@ -406,7 +406,7 @@ public:
 	}
 
 
-	// функции вычисления:
+	// С„СѓРЅРєС†РёРё РІС‹С‡РёСЃР»РµРЅРёСЏ:
 
 	float CalcPerimetr()
 	{
@@ -474,7 +474,7 @@ public:
 	}
 };
 
-// примеры перегрузки операторов ВНЕ тела класса для Circle:
+// РїСЂРёРјРµСЂС‹ РїРµСЂРµРіСЂСѓР·РєРё РѕРїРµСЂР°С‚РѕСЂРѕРІ Р’РќР• С‚РµР»Р° РєР»Р°СЃСЃР° РґР»СЏ Circle:
 
 Circle operator-(Circle& L, Circle& R)
 {
@@ -484,15 +484,15 @@ Circle operator-(Circle& L, Circle& R)
 	return Circle(xL - xR, yL - yR, rL - rR);
 }
 
-// перегруженный оператор потокового вывода ВНЕ тела класса для Circle:
+// РїРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ РїРѕС‚РѕРєРѕРІРѕРіРѕ РІС‹РІРѕРґР° Р’РќР• С‚РµР»Р° РєР»Р°СЃСЃР° РґР»СЏ Circle:
 std::ostream& operator<<(std::ostream& Out, Circle& R)
 {
 	auto [xR, yR, rR] = R.GetCordsAndRadius();
 
-	// МОЖНО ТАК:
+	// РњРћР–РќРћ РўРђРљ:
 	return Out << xR << ", " << yR << ", " << rR << "\n";
 
-	// МОЖНО И ТАК:
+	// РњРћР–РќРћ Р РўРђРљ:
 	// return Out << x.R << ", " << y.R << ", " << r.R << "\n";
 }
 
@@ -511,17 +511,17 @@ protected:
 
 	std::tuple<float, float, float> CalcABC()
 	{
-		// Длина стороны 1-2.
+		// Р”Р»РёРЅР° СЃС‚РѕСЂРѕРЅС‹ 1-2.
 		float A12 = (float)sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
-		// Длина стороны 2-3.
+		// Р”Р»РёРЅР° СЃС‚РѕСЂРѕРЅС‹ 2-3.
 		float B23 = (float)sqrt(pow(x3 - x2, 2) + pow(y3 - y2, 2));
-		// Длина стороны 1-3.
-		float С13 = (float)sqrt(pow(x3 - x1, 2) + pow(y3 - y1, 2));
+		// Р”Р»РёРЅР° СЃС‚РѕСЂРѕРЅС‹ 1-3.
+		float РЎ13 = (float)sqrt(pow(x3 - x1, 2) + pow(y3 - y1, 2));
 
-		return std::make_tuple(A12, B23, С13);
+		return std::make_tuple(A12, B23, РЎ13);
 	}
 
-	// метод копирования
+	// РјРµС‚РѕРґ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 	void copyFrom(Triangle& R)
 	{
 		x1 = R.x1;
@@ -532,7 +532,7 @@ protected:
 		y3 = R.y3;
 	}
 
-	// метод переноса
+	// РјРµС‚РѕРґ РїРµСЂРµРЅРѕСЃР°
 	void moveFrom(Triangle&& From) noexcept
 	{
 		x1 = From.x1; From.x1 = 0;
@@ -545,35 +545,35 @@ protected:
 
 public:
 
-	// конструктор
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	Triangle() = default;
 
-	// конструктор задания координат
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р·Р°РґР°РЅРёСЏ РєРѕРѕСЂРґРёРЅР°С‚
 	Triangle(float x1, float y1, float x2, float y2, float x3, float y3) :
 		x1(x1), y1(y1), x2(x2), y2(y2), x3(x3), y3(y3)
 	{
 		if (!checkCords()) throw 0;
 	}
 
-	// конструктор копирования (иллюстрация копирования компилятора) для const
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ (РёР»Р»СЋСЃС‚СЂР°С†РёСЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РєРѕРјРїРёР»СЏС‚РѕСЂР°) РґР»СЏ const
 	Triangle(const Triangle& From)
 	{
 		copyFrom((Triangle&)From);
 	}
 
-	// конструктор копирования (иллюстрация копирования компилятора)
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ (РёР»Р»СЋСЃС‚СЂР°С†РёСЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РєРѕРјРїРёР»СЏС‚РѕСЂР°)
 	Triangle(Triangle& From)
 	{
 		copyFrom((Triangle&)From);
 	}
 
-	// конструктор переноса
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРµСЂРµРЅРѕСЃР°
 	Triangle(Triangle&& From) noexcept
 	{
 		moveFrom((Triangle&&)From);
 	}
 
-	// конструктор копирования-присваивания
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ-РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 	Triangle& operator=(Triangle& R)
 	{
 		if (&R == this) return *this;
@@ -583,7 +583,7 @@ public:
 		return *this;
 	}
 
-	// конструктор перемещения
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРµСЂРµРјРµС‰РµРЅРёСЏ
 	Triangle& operator=(Triangle&& From) noexcept
 	{
 		if (&From == this) return *this;
@@ -593,13 +593,13 @@ public:
 		return *this;
 	}
 
-	// "геттер"
+	// "РіРµС‚С‚РµСЂ"
 	std::tuple<float, float, float, float, float, float> GetCords()
 	{
 		return std::make_tuple(x1, y1, x2, y2, x3, y3);
 	}
 
-	// "сеттер"
+	// "СЃРµС‚С‚РµСЂ"
 	void SetCords(float x1, float y1, float x2, float y2, float x3, float y3)
 	{
 		Triangle::x1 = x1;
@@ -611,7 +611,7 @@ public:
 	}
 
 
-	// перегрузка других операторов для класса Triangle:
+	// РїРµСЂРµРіСЂСѓР·РєР° РґСЂСѓРіРёС… РѕРїРµСЂР°С‚РѕСЂРѕРІ РґР»СЏ РєР»Р°СЃСЃР° Triangle:
 
 	Triangle operator+(Triangle& R)
 	{
@@ -642,22 +642,22 @@ public:
 	}
 
 
-	// функции вычисления:
+	// С„СѓРЅРєС†РёРё РІС‹С‡РёСЃР»РµРЅРёСЏ:
 
 	float CalcPerimetr()
 	{
-		auto [A12, B23, С13] = CalcABC();
+		auto [A12, B23, РЎ13] = CalcABC();
 
-		return A12 + B23 + С13;
+		return A12 + B23 + РЎ13;
 	}
 
 	float CalcSquare()
 	{
-		auto [A12, B23, С13] = CalcABC();
+		auto [A12, B23, РЎ13] = CalcABC();
 
-		float HalfTrianglePerimetr = (A12 + B23 + С13) / 2;
+		float HalfTrianglePerimetr = (A12 + B23 + РЎ13) / 2;
 
-		float TriangleSquare = sqrt(HalfTrianglePerimetr * (HalfTrianglePerimetr - A12) * (HalfTrianglePerimetr - B23) * (HalfTrianglePerimetr - С13));
+		float TriangleSquare = sqrt(HalfTrianglePerimetr * (HalfTrianglePerimetr - A12) * (HalfTrianglePerimetr - B23) * (HalfTrianglePerimetr - РЎ13));
 
 		return TriangleSquare;
 	}
@@ -711,7 +711,7 @@ public:
 	}
 };
 
-// примеры перегрузки операторов ВНЕ тела класса для Rect:
+// РїСЂРёРјРµСЂС‹ РїРµСЂРµРіСЂСѓР·РєРё РѕРїРµСЂР°С‚РѕСЂРѕРІ Р’РќР• С‚РµР»Р° РєР»Р°СЃСЃР° РґР»СЏ Rect:
 
 Triangle operator-(Triangle& L, Triangle& R)
 {
@@ -721,21 +721,21 @@ Triangle operator-(Triangle& L, Triangle& R)
 	return Triangle(Lx1 - Rx1, Ly1 - Ry1, Lx2 - Rx2, Ly2 - Ry2, Lx3 - Rx3, Ly3 - Ry3);
 }
 
-// перегруженный оператор потокового вывода ВНЕ тела класса для Rect:
+// РїРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ РїРѕС‚РѕРєРѕРІРѕРіРѕ РІС‹РІРѕРґР° Р’РќР• С‚РµР»Р° РєР»Р°СЃСЃР° РґР»СЏ Rect:
 std::ostream& operator<<(std::ostream& Out, Triangle& R)
 {
 	auto [Rx1, Ry1, Rx2, Ry2, Rx3, Ry3] = R.GetCords();
 
-	// МОЖНО ТАК:
+	// РњРћР–РќРћ РўРђРљ:
 	return Out << Rx1 << ", " << Ry1 << ", " << Rx2 << ", " << Ry2 << ", " << Rx3 << ", " << Ry3 << "\n";
 
-	// МОЖНО И ТАК:
+	// РњРћР–РќРћ Р РўРђРљ:
 	// return Out << R.x1 << ", " << R.y1 << ", " << R.x2 << ", " << R.y2 << ", " << R.x3 << ", " << R.y3 << "\n";
 }
 
 
 
-// Пример класса с приватным конструктором и функции Factory() для создания объекта этого класса.
+// РџСЂРёРјРµСЂ РєР»Р°СЃСЃР° СЃ РїСЂРёРІР°С‚РЅС‹Рј РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂРѕРј Рё С„СѓРЅРєС†РёРё Factory() РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РѕР±СЉРµРєС‚Р° СЌС‚РѕРіРѕ РєР»Р°СЃСЃР°.
 class TestClass_1
 {
 	friend TestClass_1* TestClassFactory();
@@ -752,7 +752,7 @@ TestClass_1* TestClassFactory()
 
 
 
-// Пример класса со статическим полем (переменной).
+// РџСЂРёРјРµСЂ РєР»Р°СЃСЃР° СЃРѕ СЃС‚Р°С‚РёС‡РµСЃРєРёРј РїРѕР»РµРј (РїРµСЂРµРјРµРЅРЅРѕР№).
 class TestClass_2
 {
 public:

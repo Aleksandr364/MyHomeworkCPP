@@ -4,8 +4,8 @@
 #include <iostream>
 #include "MyExceptions_for_DynArray.h"
 
-// классический простейший стек (класс)
-// PushBack, PopBack - стековые операции
+// РєР»Р°СЃСЃРёС‡РµСЃРєРёР№ РїСЂРѕСЃС‚РµР№С€РёР№ СЃС‚РµРє (РєР»Р°СЃСЃ)
+// PushBack, PopBack - СЃС‚РµРєРѕРІС‹Рµ РѕРїРµСЂР°С†РёРё
 template<typename T> class DynArray
 {
 
@@ -13,11 +13,11 @@ protected:
 
 	T* data = nullptr;
 
-	// сколько элементов использовано
+	// СЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ РёСЃРїРѕР»СЊР·РѕРІР°РЅРѕ
 	uint32_t current_size = 0;
-	// сколько эл-ов распределено
+	// СЃРєРѕР»СЊРєРѕ СЌР»-РѕРІ СЂР°СЃРїСЂРµРґРµР»РµРЅРѕ
 	uint32_t max_size = 0;
-	// шаг увеличения массива
+	// С€Р°Рі СѓРІРµР»РёС‡РµРЅРёСЏ РјР°СЃСЃРёРІР°
 	uint32_t step = 0;
 
 	void Allocate()
@@ -35,7 +35,7 @@ protected:
 
 		T* new_data = new T[new_max_size]{};
 
-		// sizeof(Т) - размер типа "Т" в байтах
+		// sizeof(Рў) - СЂР°Р·РјРµСЂ С‚РёРїР° "Рў" РІ Р±Р°Р№С‚Р°С…
 		memcpy(new_data, data, sizeof(T) * max_size);
 
 		delete[] data;
@@ -102,9 +102,9 @@ public:
 
 	DynArray(DynArray&& rhs) noexcept
 	{
-		// MoveArray((DynArray&&)rhs); <- приведение типа в стиле С "C style type cast"
-		// MoveArray(static_cast<DynArray&&>(rhs)); // <- приведение типа в стиле C++ (один из нескольких)
-		MoveArray(std::move(rhs)); // <- приведение типа в стиле C++ (modern C++) с помощью std::move()
+		// MoveArray((DynArray&&)rhs); <- РїСЂРёРІРµРґРµРЅРёРµ С‚РёРїР° РІ СЃС‚РёР»Рµ РЎ "C style type cast"
+		// MoveArray(static_cast<DynArray&&>(rhs)); // <- РїСЂРёРІРµРґРµРЅРёРµ С‚РёРїР° РІ СЃС‚РёР»Рµ C++ (РѕРґРёРЅ РёР· РЅРµСЃРєРѕР»СЊРєРёС…)
+		MoveArray(std::move(rhs)); // <- РїСЂРёРІРµРґРµРЅРёРµ С‚РёРїР° РІ СЃС‚РёР»Рµ C++ (modern C++) СЃ РїРѕРјРѕС‰СЊСЋ std::move()
 		std::cout << "DynArray move constructor.\n";
 		std::cout << std::hex << std::showbase << this << std::noshowbase << std::dec << "\n";
 	}
@@ -129,9 +129,9 @@ public:
 
 		DestructData();
 
-		// MoveArray((DynArray&&)rhs); <- приведение типа в стиле С "C style type cast"
-		// MoveArray(static_cast<DynArray&&>(rhs)); // <- приведение типа в стиле C++ (один из нескольких)
-		MoveArray(std::move(rhs)); // <- приведение типа в стиле C++ (modern C++) с помощью std::move()
+		// MoveArray((DynArray&&)rhs); <- РїСЂРёРІРµРґРµРЅРёРµ С‚РёРїР° РІ СЃС‚РёР»Рµ РЎ "C style type cast"
+		// MoveArray(static_cast<DynArray&&>(rhs)); // <- РїСЂРёРІРµРґРµРЅРёРµ С‚РёРїР° РІ СЃС‚РёР»Рµ C++ (РѕРґРёРЅ РёР· РЅРµСЃРєРѕР»СЊРєРёС…)
+		MoveArray(std::move(rhs)); // <- РїСЂРёРІРµРґРµРЅРёРµ С‚РёРїР° РІ СЃС‚РёР»Рµ C++ (modern C++) СЃ РїРѕРјРѕС‰СЊСЋ std::move()
 
 		std::cout << "DynArray move-assign.\n";
 		std::cout << std::hex << std::showbase << this << std::noshowbase << std::dec << "\n";
@@ -171,7 +171,7 @@ public:
 		current_size = 0;
 	}
 
-	// добавить новый элемент к концу массива
+	// РґРѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ Рє РєРѕРЅС†Сѓ РјР°СЃСЃРёРІР°
 	void PushBack(T value)
 	{
 		if (current_size >= max_size)
@@ -179,7 +179,7 @@ public:
 		data[current_size++] = value;
 	}
 
-	// читает из конца массива и уменьшает счетчик использованных элементов
+	// С‡РёС‚Р°РµС‚ РёР· РєРѕРЅС†Р° РјР°СЃСЃРёРІР° Рё СѓРјРµРЅСЊС€Р°РµС‚ СЃС‡РµС‚С‡РёРє РёСЃРїРѕР»СЊР·РѕРІР°РЅРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ
 	T PopBack()
 	{
 		if (!current_size) throw MyExceptions_for_DynArray(ExceptionType_for_DynArray::empty);
@@ -207,12 +207,12 @@ public:
 		return data[index];
 	}
 
-	T operator[](uint32_t index) // без проверки допустимости индекса
+	T operator[](uint32_t index) // Р±РµР· РїСЂРѕРІРµСЂРєРё РґРѕРїСѓСЃС‚РёРјРѕСЃС‚Рё РёРЅРґРµРєСЃР°
 	{
 		return data[index];
 	}
 
-	T at(uint32_t index) // at == operator[] с проверкой допустимости индекса (работает медленее, чем без проверки)
+	T at(uint32_t index) // at == operator[] СЃ РїСЂРѕРІРµСЂРєРѕР№ РґРѕРїСѓСЃС‚РёРјРѕСЃС‚Рё РёРЅРґРµРєСЃР° (СЂР°Р±РѕС‚Р°РµС‚ РјРµРґР»РµРЅРµРµ, С‡РµРј Р±РµР· РїСЂРѕРІРµСЂРєРё)
 	{
 		return Get(index);
 	}
@@ -236,7 +236,7 @@ public:
 		return data[current_size - 1];
 	}
 
-	// Вставить элемент value в позицию index
+	// Р’СЃС‚Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ value РІ РїРѕР·РёС†РёСЋ index
 	void Insert(uint32_t index, T value)
 	{
 		if (index >= current_size) throw MyExceptions_for_DynArray(ExceptionType_for_DynArray::index_too_large);
@@ -253,7 +253,7 @@ public:
 	{
 		if (index >= current_size) throw MyExceptions_for_DynArray(ExceptionType_for_DynArray::index_too_large);
 
-		// Для того, чтобы удалить последний элемент корректно "(current_size - index - 1)" - потому что копировать НИЧЕГО НЕ НАДО
+		// Р”Р»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ СѓРґР°Р»РёС‚СЊ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ РєРѕСЂСЂРµРєС‚РЅРѕ "(current_size - index - 1)" - РїРѕС‚РѕРјСѓ С‡С‚Рѕ РєРѕРїРёСЂРѕРІР°С‚СЊ РќРР§Р•Р“Рћ РќР• РќРђР”Рћ
 		memcpy(data + index, data + index + 1, sizeof(T) * (current_size - index - 1));
 		current_size--;
 	}
@@ -277,7 +277,7 @@ public:
 
 	DynArray operator+(const DynArray& rhs)
 	{
-		int new_max_size = (max_size >= rhs.max_size) ? max_size + rhs.current_size : rhs.max_size + current_size; // тернарный оператор (трёхчленный) как if
+		int new_max_size = (max_size >= rhs.max_size) ? max_size + rhs.current_size : rhs.max_size + current_size; // С‚РµСЂРЅР°СЂРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ (С‚СЂС‘С…С‡Р»РµРЅРЅС‹Р№) РєР°Рє if
 
 		DynArray New_DynArray(new_max_size, std::max(step, rhs.step));
 
@@ -285,12 +285,12 @@ public:
 		memcpy(New_DynArray.data + current_size, rhs.data, sizeof(T) * rhs.current_size);
 		New_DynArray.current_size = current_size + rhs.current_size;
 
-		return New_DynArray; // компилятор делает вызов std::move(), а НЕ копирование!!!
+		return New_DynArray; // РєРѕРјРїРёР»СЏС‚РѕСЂ РґРµР»Р°РµС‚ РІС‹Р·РѕРІ std::move(), Р° РќР• РєРѕРїРёСЂРѕРІР°РЅРёРµ!!!
 	}
 
 	DynArray operator+=(const DynArray& rhs)
 	{	
-		// К текущему Объекту (который уже существует) прибавить другой уже существующий объект (rhs)
+		// Рљ С‚РµРєСѓС‰РµРјСѓ РћР±СЉРµРєС‚Сѓ (РєРѕС‚РѕСЂС‹Р№ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚) РїСЂРёР±Р°РІРёС‚СЊ РґСЂСѓРіРѕР№ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ РѕР±СЉРµРєС‚ (rhs)
 		if (!data) throw MyExceptions_for_DynArray(ExceptionType_for_DynArray::dynarray_doesnt_exist);
 		if (!max_size) throw MyExceptions_for_DynArray(ExceptionType_for_DynArray::max_size_null);
 		if (!step) throw MyExceptions_for_DynArray(ExceptionType_for_DynArray::step_null);
@@ -303,9 +303,9 @@ public:
 		return *this;
 	}
 
-	// "friend" - разрешает доступ к ЛЮБЫМ защищенным полям и методом класса (friend - это не метод класса, а внешний метод автоматически)
-	// оператор "<<" имеет именно такую сигнатуру глобальной функции - НЕЛЬЗЯ сделать оператор "<<" методом класса, он обязан быть глобальным
-	// НО В ДАННОМ СЛУЧАЕ приходится определять оператор "<<" ВНУТРИ КЛАССА - это называется "HIDDEN FRIEND"
+	// "friend" - СЂР°Р·СЂРµС€Р°РµС‚ РґРѕСЃС‚СѓРї Рє Р›Р®Р‘Р«Рњ Р·Р°С‰РёС‰РµРЅРЅС‹Рј РїРѕР»СЏРј Рё РјРµС‚РѕРґРѕРј РєР»Р°СЃСЃР° (friend - СЌС‚Рѕ РЅРµ РјРµС‚РѕРґ РєР»Р°СЃСЃР°, Р° РІРЅРµС€РЅРёР№ РјРµС‚РѕРґ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё)
+	// РѕРїРµСЂР°С‚РѕСЂ "<<" РёРјРµРµС‚ РёРјРµРЅРЅРѕ С‚Р°РєСѓСЋ СЃРёРіРЅР°С‚СѓСЂСѓ РіР»РѕР±Р°Р»СЊРЅРѕР№ С„СѓРЅРєС†РёРё - РќР•Р›Р¬Р—РЇ СЃРґРµР»Р°С‚СЊ РѕРїРµСЂР°С‚РѕСЂ "<<" РјРµС‚РѕРґРѕРј РєР»Р°СЃСЃР°, РѕРЅ РѕР±СЏР·Р°РЅ Р±С‹С‚СЊ РіР»РѕР±Р°Р»СЊРЅС‹Рј
+	// РќРћ Р’ Р”РђРќРќРћРњ РЎР›РЈР§РђР• РїСЂРёС…РѕРґРёС‚СЃСЏ РѕРїСЂРµРґРµР»СЏС‚СЊ РѕРїРµСЂР°С‚РѕСЂ "<<" Р’РќРЈРўР Р РљР›РђРЎРЎРђ - СЌС‚Рѕ РЅР°Р·С‹РІР°РµС‚СЃСЏ "HIDDEN FRIEND"
 	friend std::ostream& operator<<(std::ostream& output, const DynArray<T>& rhs)
 	{
 		output << rhs.current_size << "\n";
@@ -344,7 +344,7 @@ public:
 	}
 };
 
-// глобальный вариант перегруженного оператора "+", принимающего 2 динамических массива на вход
+// РіР»РѕР±Р°Р»СЊРЅС‹Р№ РІР°СЂРёР°РЅС‚ РїРµСЂРµРіСЂСѓР¶РµРЅРЅРѕРіРѕ РѕРїРµСЂР°С‚РѕСЂР° "+", РїСЂРёРЅРёРјР°СЋС‰РµРіРѕ 2 РґРёРЅР°РјРёС‡РµСЃРєРёС… РјР°СЃСЃРёРІР° РЅР° РІС…РѕРґ
 // template<typename T> DynArray<T> operator+(DynArray<T>& lhs, DynArray<T>& rhs) {}
 
 void Test_DynArray();

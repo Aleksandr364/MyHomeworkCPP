@@ -2,7 +2,7 @@
 #include "Global.h"
 #include "NewFileH.h"
 
-// примеры использования типа "указатель на функцию"
+// РїСЂРёРјРµСЂС‹ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ С‚РёРїР° "СѓРєР°Р·Р°С‚РµР»СЊ РЅР° С„СѓРЅРєС†РёСЋ"
 int FuncTest1(float x)
 {
 	return (int)x;
@@ -23,7 +23,7 @@ void FuncTestMain1()
 	for (int i = 0; i < FuncArrayLen; i++) std::cout << (*FuncArray[i])(3.14f) << "\n";
 }
 
-// задание переменной "указатель на функцию" без специально созданного типа
+// Р·Р°РґР°РЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ "СѓРєР°Р·Р°С‚РµР»СЊ РЅР° С„СѓРЅРєС†РёСЋ" Р±РµР· СЃРїРµС†РёР°Р»СЊРЅРѕ СЃРѕР·РґР°РЅРЅРѕРіРѕ С‚РёРїР°
 void FuncTestMain2()
 {
 	int (*FuncPtr)(float) = nullptr;
@@ -47,11 +47,11 @@ bool FloatEquality(float x, float y, float d)
 }
 
 // strcpy_s(cText1, 10, "Dfg");
-// Классическое strcpy выглядит так: strcpy(destination, source).
+// РљР»Р°СЃСЃРёС‡РµСЃРєРѕРµ strcpy РІС‹РіР»СЏРґРёС‚ С‚Р°Рє: strcpy(destination, source).
 char* my_strcpy(char* destination, char* source)
 {
 	char* temp = destination;
-	// цикл копирования строки целиком:
+	// С†РёРєР» РєРѕРїРёСЂРѕРІР°РЅРёСЏ СЃС‚СЂРѕРєРё С†РµР»РёРєРѕРј:
 	while (*destination++ = *source++);
 	return temp;
 }
@@ -71,14 +71,14 @@ size_t my_strlen(const char* str)
 	return i;
 }
 
-// рекурсивная функция для факториала
+// СЂРµРєСѓСЂСЃРёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ С„Р°РєС‚РѕСЂРёР°Р»Р°
 int64_t Factorial(int n)
 {
 	if (n == 1) return 1;
 	else return n * Factorial(n - 1);
 }
 
-// факториал без рекурсии
+// С„Р°РєС‚РѕСЂРёР°Р» Р±РµР· СЂРµРєСѓСЂСЃРёРё
 int64_t FactorialWithoutRec(int n)
 {
 	int64_t iRes = 1;
@@ -188,13 +188,13 @@ int my_memicmp(const void* ptr1, const void* ptr2, size_t num)
 	return iStr1 - iStr2;
 }
 
-// функция меняет местами байты внутри 4-байтового целого: 0 -> 3, 1 -> 2.
+// С„СѓРЅРєС†РёСЏ РјРµРЅСЏРµС‚ РјРµСЃС‚Р°РјРё Р±Р°Р№С‚С‹ РІРЅСѓС‚СЂРё 4-Р±Р°Р№С‚РѕРІРѕРіРѕ С†РµР»РѕРіРѕ: 0 -> 3, 1 -> 2.
 uint32_t ExchangeDWbytes(uint8_t b[4])
 {
 	return (b[3]) | (b[2] << 8) | (b[1] << 16) | (b[0] << 24);
 }
 
-// приводит размер mp3 к "человеческому" формату
+// РїСЂРёРІРѕРґРёС‚ СЂР°Р·РјРµСЂ mp3 Рє "С‡РµР»РѕРІРµС‡РµСЃРєРѕРјСѓ" С„РѕСЂРјР°С‚Сѓ
 uint32_t AdjustSize(uint32_t dwSize)
 {
 	dwSize &= 0x7F7F7F7F;
@@ -205,7 +205,7 @@ ID3v24Header* ReadHeader(const char* FileName)
 {
 	FILE* file = nullptr;
 
-	fopen_s(&file, FileName, "rb"); // "rb" - бинарный режим чтения для любых НЕ текстовых файлов: изображения, звуковые, exe и тд.
+	fopen_s(&file, FileName, "rb"); // "rb" - Р±РёРЅР°СЂРЅС‹Р№ СЂРµР¶РёРј С‡С‚РµРЅРёСЏ РґР»СЏ Р»СЋР±С‹С… РќР• С‚РµРєСЃС‚РѕРІС‹С… С„Р°Р№Р»РѕРІ: РёР·РѕР±СЂР°Р¶РµРЅРёСЏ, Р·РІСѓРєРѕРІС‹Рµ, exe Рё С‚Рґ.
 
 	if (!file) return nullptr;
 

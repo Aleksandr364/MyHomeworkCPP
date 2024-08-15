@@ -36,7 +36,7 @@ bool isEven(int value)
 
 bool isEven2(int value)
 {
-	// сохранить все биты и обнулить только младший
+	// СЃРѕС…СЂР°РЅРёС‚СЊ РІСЃРµ Р±РёС‚С‹ Рё РѕР±РЅСѓР»РёС‚СЊ С‚РѕР»СЊРєРѕ РјР»Р°РґС€РёР№
 	// return value & 0xfffffffe;
 	return value & 1;
 }
@@ -84,7 +84,7 @@ void trimRight(char* str)
 {
 	if (!str) return;
 
-	int n = -1; // индекс последнего непробельного символа
+	int n = -1; // РёРЅРґРµРєСЃ РїРѕСЃР»РµРґРЅРµРіРѕ РЅРµРїСЂРѕР±РµР»СЊРЅРѕРіРѕ СЃРёРјРІРѕР»Р°
 
 	for (int i = 0;; i++)
 	{
@@ -100,7 +100,7 @@ void ChronoTest(int count, trimFuncType trimFunc, int64_t len, int64_t TailLen, 
 {
 	std::chrono::nanoseconds* ArrayTime = new std::chrono::nanoseconds[count]{};
 
-	// начальное значение времени (нулевое)
+	// РЅР°С‡Р°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РІСЂРµРјРµРЅРё (РЅСѓР»РµРІРѕРµ)
 	std::chrono::nanoseconds timeSum = std::chrono::nanoseconds::zero();
 	
 	char* buffer = TestAllocMem(len, TailLen);
@@ -121,7 +121,7 @@ void ChronoTest(int count, trimFuncType trimFunc, int64_t len, int64_t TailLen, 
 
 	std::chrono::nanoseconds AverageTime = timeSum / count;
 
-	// перевод из std::chrono::nanoseconds в double
+	// РїРµСЂРµРІРѕРґ РёР· std::chrono::nanoseconds РІ double
 	double dAverageTime = std::chrono::duration<double, std::nano>(AverageTime).count();
 
 	std::cout << text << "\n";

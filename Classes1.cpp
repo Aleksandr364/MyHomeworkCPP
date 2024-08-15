@@ -9,10 +9,10 @@ Phone_Book_Item::Phone_Book_Item()
 
 Phone_Book_Item* classes()
 {
-	// создание экземпляра (объекта) класса Phone_Book_Item
-	// слева - класс Phone_Book_Item, справа - имя нового объекта phone_book
+	// СЃРѕР·РґР°РЅРёРµ СЌРєР·РµРјРїР»СЏСЂР° (РѕР±СЉРµРєС‚Р°) РєР»Р°СЃСЃР° Phone_Book_Item
+	// СЃР»РµРІР° - РєР»Р°СЃСЃ Phone_Book_Item, СЃРїСЂР°РІР° - РёРјСЏ РЅРѕРІРѕРіРѕ РѕР±СЉРµРєС‚Р° phone_book
 
-	// вызывается конструктор "по умолчанию"
+	// РІС‹Р·С‹РІР°РµС‚СЃСЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ "РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ"
 	Phone_Book_Item phone_book_1;
 
 	if (phone_book_1.Check_Phone_Number()) std::cout << "true\n";
@@ -21,9 +21,9 @@ Phone_Book_Item* classes()
 	phone_book_1.numberLen = 123;
 	phone_book_1.Get_Phone_Number();
 
-	// заголовок параметрического конструктора: Phone_Book_Item(std::string First_Name, std::string Surname, const char* Phone_Number, int Year_of_Birthday)
-	// вызывается параметрический конструктор
-	// создаётся стэковый объект (локальная память функции) 
+	// Р·Р°РіРѕР»РѕРІРѕРє РїР°СЂР°РјРµС‚СЂРёС‡РµСЃРєРѕРіРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°: Phone_Book_Item(std::string First_Name, std::string Surname, const char* Phone_Number, int Year_of_Birthday)
+	// РІС‹Р·С‹РІР°РµС‚СЃСЏ РїР°СЂР°РјРµС‚СЂРёС‡РµСЃРєРёР№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	// СЃРѕР·РґР°С‘С‚СЃСЏ СЃС‚СЌРєРѕРІС‹Р№ РѕР±СЉРµРєС‚ (Р»РѕРєР°Р»СЊРЅР°СЏ РїР°РјСЏС‚СЊ С„СѓРЅРєС†РёРё) 
 	Phone_Book_Item phone_book_2("name", "second_name", "1234567890");
 
 	if (phone_book_2.Check_Phone_Number()) std::cout << "true\n";
@@ -31,7 +31,7 @@ Phone_Book_Item* classes()
 
 	phone_book_2.Get_Phone_Number();
 
-	// создаётся объект в куче
+	// СЃРѕР·РґР°С‘С‚СЃСЏ РѕР±СЉРµРєС‚ РІ РєСѓС‡Рµ
 	Phone_Book_Item* phone_book_3 = new Phone_Book_Item("name*", "second_name*", "1234567890*");
 
 	if (phone_book_3->Check_Phone_Number()) std::cout << "true\n";

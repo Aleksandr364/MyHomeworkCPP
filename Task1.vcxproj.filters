@@ -86,9 +86,6 @@
     <ClInclude Include="MyExceptions_for_DynArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DynArrayExt.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="HashTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>

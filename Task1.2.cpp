@@ -13,21 +13,21 @@
 
 using namespace std;
 
-// глобальный массив
+// РіР»РѕР±Р°Р»СЊРЅС‹Р№ РјР°СЃСЃРёРІ
 int global_iDataArray[]{1, 6, -8, 4, 2, -1, 0, 7, 8, 3, 2, 10, 5, -1, -2, -6, -34, 0};
 const int global_iDataArray_Len = sizeof(global_iDataArray) / sizeof(int);
 
-// Задача 1.
+// Р—Р°РґР°С‡Р° 1.
 
 int GetArrMinValAndMinIdx(int* iData, int iLen, int& iMinIdx)
 {
-	// переменная для индекса минимального элемента массива iData
+	// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РёРЅРґРµРєСЃР° РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
 	iMinIdx = -1;
 
 	if (!iData || !iLen) return 0;
 
-	// переменная для минимального элемента массива iData
-	int Min_of_iData = std::numeric_limits<int>::max(); // максимально возможное число типа Int
+	// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
+	int Min_of_iData = std::numeric_limits<int>::max(); // РјР°РєСЃРёРјР°Р»СЊРЅРѕ РІРѕР·РјРѕР¶РЅРѕРµ С‡РёСЃР»Рѕ С‚РёРїР° Int
 
 	for (int i = 0; i < iLen; i++)
 	{
@@ -45,7 +45,7 @@ int GetArrMinVal(int* iData, int iLen)
 {
 	if (!iData || !iLen) return 0;
 
-	// переменная для индекса минимального элемента массива iData
+	// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РёРЅРґРµРєСЃР° РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
 	int iMinIdx = 0;
 
 	return GetArrMinValAndMinIdx(iData, iLen, iMinIdx);
@@ -53,7 +53,7 @@ int GetArrMinVal(int* iData, int iLen)
 
 void Task1_2_1()
 {
-	// определяем длину массива iData через задание iLen
+	// РѕРїСЂРµРґРµР»СЏРµРј РґР»РёРЅСѓ РјР°СЃСЃРёРІР° iData С‡РµСЂРµР· Р·Р°РґР°РЅРёРµ iLen
 	int iLen = 0;
 	cout << "Task 1: Min of iData and iMinIdx.\n";
 	cout << "iData Length: iLen = ";
@@ -61,10 +61,10 @@ void Task1_2_1()
 
 	if (iLen == 0) return;
 
-	// объявление массива iData
+	// РѕР±СЉСЏРІР»РµРЅРёРµ РјР°СЃСЃРёРІР° iData
 	int* iData = new int[iLen] {0};
 
-	// задание элементов массива iData
+	// Р·Р°РґР°РЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° iData
 	for (int i = 0, k = 0; i < iLen; i++)
 	{
 		cout << "iData[" << i << "] = ";
@@ -73,34 +73,34 @@ void Task1_2_1()
 		k = 0;
 	}
 
-	// локальный блок {}
+	// Р»РѕРєР°Р»СЊРЅС‹Р№ Р±Р»РѕРє {}
 	{
-		// переменная для индекса минимального элемента массива iData
+		// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РёРЅРґРµРєСЃР° РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
 		int iMinIdx = 0;
-		// переменная для минимального элемента массива iData
+		// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
 		int Min_of_iData = GetArrMinValAndMinIdx(iData, iLen, iMinIdx);
 
-		// вывод результата через значения переменных Min_of_iData и iMinIdx
+		// РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р° С‡РµСЂРµР· Р·РЅР°С‡РµРЅРёСЏ РїРµСЂРµРјРµРЅРЅС‹С… Min_of_iData Рё iMinIdx
 		cout << "Min of iData = " << Min_of_iData << "\n";
 		cout << "iMinIdx = " << iMinIdx << "\n";
 	}
 
-	// очистка памяти
+	// РѕС‡РёСЃС‚РєР° РїР°РјСЏС‚Рё
 	delete[]iData;
 }
 
-// Задача 2.
+// Р—Р°РґР°С‡Р° 2.
 
 int GetArrMinSecondVal2pass(int* iData, int iLen)
 {
 	if (!iData || !iLen) return 0;
 
-	// переменная для индекса минимального элемента массива iData
+	// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РёРЅРґРµРєСЃР° РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
 	int iMinIdx = 0;
-	// переменная для минимального элемента массива iData
+	// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
 	int Min_of_iData = std::numeric_limits<int>::max();
 	
-	// поиск индекса минимального элемента массива iData
+	// РїРѕРёСЃРє РёРЅРґРµРєСЃР° РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
 	for (int i = 0; i < iLen; i++)
 	{
 		if (Min_of_iData > iData[i])
@@ -110,13 +110,13 @@ int GetArrMinSecondVal2pass(int* iData, int iLen)
 		}
 	}
 
-	// "устранение" минимального элемента массива
+	// "СѓСЃС‚СЂР°РЅРµРЅРёРµ" РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР°
 	iData[iMinIdx] = numeric_limits<int>::max();
 
-	// переменная для второго минимального элемента массива iData
+	// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РІС‚РѕСЂРѕРіРѕ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
 	int Second_Min_of_iData = std::numeric_limits<int>::max();
 
-	// поиск второго минимального элемента массива iData
+	// РїРѕРёСЃРє РІС‚РѕСЂРѕРіРѕ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
 	for (int i = 0; i < iLen; i++)
 	{
 		if (Second_Min_of_iData > iData[i])
@@ -130,7 +130,7 @@ int GetArrMinSecondVal2pass(int* iData, int iLen)
 
 void Task1_2_2()
 {
-	// определяем длину массива iData через задание iLen
+	// РѕРїСЂРµРґРµР»СЏРµРј РґР»РёРЅСѓ РјР°СЃСЃРёРІР° iData С‡РµСЂРµР· Р·Р°РґР°РЅРёРµ iLen
 	int iLen = 0;
 	cout << "\nTaks 2: Second Min of iData.\n";
 	cout << "iData Length: iLen = ";
@@ -138,10 +138,10 @@ void Task1_2_2()
 
 	if (iLen < 2) return;
 
-	// объявление массива iData
+	// РѕР±СЉСЏРІР»РµРЅРёРµ РјР°СЃСЃРёРІР° iData
 	int* iData = new int[iLen] {0};
 
-	// задание элементов массива iData
+	// Р·Р°РґР°РЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° iData
 	for (int i = 0, k = 0; i < iLen; i++)
 	{
 		cout << "iData[" << i << "] = ";
@@ -150,29 +150,29 @@ void Task1_2_2()
 		k = 0;
 	}
 
-	// переменная для второго минимального элемента массива iData
+	// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РІС‚РѕСЂРѕРіРѕ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
 	int Second_Min_of_iData = GetArrMinSecondVal2pass(iData, iLen);
 
-	// вывод результата через значение переменной Second_Min_of_iData
+	// РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р° С‡РµСЂРµР· Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ Second_Min_of_iData
 	cout << "Second_Min_of_iData = " << Second_Min_of_iData << "\n";
 
-	// очистка памяти
+	// РѕС‡РёСЃС‚РєР° РїР°РјСЏС‚Рё
 	delete[]iData;
 }
 
-// Задача 2_1
+// Р—Р°РґР°С‡Р° 2_1
 
 int GetArrMinSecondVal2pass_2(int* iData, int iLen)
 {
 	if (!iData || !iLen) return 0;
 
-	// переменная для минимального элемента массива iData
+	// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
 	int Min_of_iData = GetArrMinVal(iData, iLen);
 
-	// переменная для второго минимального элемента массива iData
+	// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РІС‚РѕСЂРѕРіРѕ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
 	int Second_Min_of_iData = std::numeric_limits<int>::max();
 
-	// поиск второго минимального элемента массива iData
+	// РїРѕРёСЃРє РІС‚РѕСЂРѕРіРѕ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
 	for (int i = 0; i < iLen; i++)
 		if (Min_of_iData < iData[i] && Second_Min_of_iData > iData[i])
 			Second_Min_of_iData = iData[i];
@@ -184,20 +184,20 @@ int GetArrMinSecondVal2pass_2(int* iData, int iLen)
 
 void Task1_2_2_1()
 {
-	// переменная для второго минимального элемента массива iData
+	// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РІС‚РѕСЂРѕРіРѕ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
 	int Second_Min_of_iData = GetArrMinSecondVal2pass_2(global_iDataArray, global_iDataArray_Len);
 
-	// вывод результата через значение переменной Second_Min_of_iData
+	// РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р° С‡РµСЂРµР· Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ Second_Min_of_iData
 	cout << "Second_Min_of_iData = " << Second_Min_of_iData << "\n";
 }
 
-// Задача 3.
+// Р—Р°РґР°С‡Р° 3.
 
 int GetArrMinSecondVal1pass(int* iData, int iLen, int& Second_Min_of_iData)
 {
 	if (!iData || !iLen) return 0;
 
-	// переменная для минимального элемента массива iData
+	// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
 	int Min_of_iData = std::numeric_limits<int>::max();
 
 	for (int i = 0; i < iLen; i++)
@@ -215,29 +215,29 @@ int GetArrMinSecondVal1pass(int* iData, int iLen, int& Second_Min_of_iData)
 
 void Task1_2_3()
 {
-	// переменная для второго минимального элемента массива iData
+	// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РІС‚РѕСЂРѕРіРѕ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
 	int Second_Min_of_iData = 0;
-	// переменная для минимального элемента массива iData
+	// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° iData
 	int Min_of_iData = GetArrMinSecondVal1pass(global_iDataArray, global_iDataArray_Len, Second_Min_of_iData);
 
-	// вывод результата через значения переменных Min_of_iData и Second_Min_of_iData
+	// РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р° С‡РµСЂРµР· Р·РЅР°С‡РµРЅРёСЏ РїРµСЂРµРјРµРЅРЅС‹С… Min_of_iData Рё Second_Min_of_iData
 	cout << "Min of iData = " << Min_of_iData << "\n";
 	cout << "Second Min of iData = " << Second_Min_of_iData << "\n";
 }
 
-// Задача 4.
+// Р—Р°РґР°С‡Р° 4.
 
 int* GetNegArrItems(int* iData, int iLen, int& iOutLen)
 {
 	if (!iData) return nullptr;
 	
-	// находим размер массива iOut, считая кол-во отриц. эл-ов в массиве iData
+	// РЅР°С…РѕРґРёРј СЂР°Р·РјРµСЂ РјР°СЃСЃРёРІР° iOut, СЃС‡РёС‚Р°СЏ РєРѕР»-РІРѕ РѕС‚СЂРёС†. СЌР»-РѕРІ РІ РјР°СЃСЃРёРІРµ iData
 	for (int i = 0; i < iLen; i++)
 	{
 		if (iData[i] < 0) iOutLen++;
 	}
 
-	// если кол-во отриц. эл-ов iData равно 0, тогда возвращает iOut с 0, а iOutLen = 1
+	// РµСЃР»Рё РєРѕР»-РІРѕ РѕС‚СЂРёС†. СЌР»-РѕРІ iData СЂР°РІРЅРѕ 0, С‚РѕРіРґР° РІРѕР·РІСЂР°С‰Р°РµС‚ iOut СЃ 0, Р° iOutLen = 1
 	if (iOutLen == 0)
 	{
 		int* iOut = new int[1] {0};
@@ -248,7 +248,7 @@ int* GetNegArrItems(int* iData, int iLen, int& iOutLen)
 	{
 		int* iOut = new int[iOutLen] {};
 
-		// заполняем iOut элементами
+		// Р·Р°РїРѕР»РЅСЏРµРј iOut СЌР»РµРјРµРЅС‚Р°РјРё
 		for (int i = 0, k = 0; i < iLen; i++)
 		{
 			if (iData[i] < 0)
@@ -285,12 +285,12 @@ int* GetNegArrItems_2(int* iData, int iLen, int& iOutLen)
 
 void Task1_2_4()
 {
-	// переменная для числа элементов массива iOut
+	// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ С‡РёСЃР»Р° СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° iOut
 	int iOutLen = 0;
-	// массив iOut
+	// РјР°СЃСЃРёРІ iOut
 	int* iOut = GetNegArrItems_2(global_iDataArray, global_iDataArray_Len, iOutLen);
 
-	// вывод результата: кол-во эл-ов массива iOut и сам массив
+	// РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р°: РєРѕР»-РІРѕ СЌР»-РѕРІ РјР°СЃСЃРёРІР° iOut Рё СЃР°Рј РјР°СЃСЃРёРІ
 	cout << "iOutLen = " << iOutLen << "\n";
 	cout << "iOut:" << "\n";
 	for (int i = 0; i < iOutLen; i++)
@@ -301,19 +301,19 @@ void Task1_2_4()
 	delete[] iOut;
 }
 
-// Задача 5.
+// Р—Р°РґР°С‡Р° 5.
 
 int* SeparateNegAndPosItems2pass(int* iData, int iLen, int& iOutLen)
 {
 	if (!iData) return nullptr;
 
-	// находим размер массива iOut, считая кол-во не нулевых эл-ов в массиве iData
+	// РЅР°С…РѕРґРёРј СЂР°Р·РјРµСЂ РјР°СЃСЃРёРІР° iOut, СЃС‡РёС‚Р°СЏ РєРѕР»-РІРѕ РЅРµ РЅСѓР»РµРІС‹С… СЌР»-РѕРІ РІ РјР°СЃСЃРёРІРµ iData
 	for (int i = 0; i < iLen; i++)
 	{
 		if (iData[i] != 0) iOutLen++;
 	}
 
-	// если кол-во эл-ов iOutLen равно 0, тогда возвращает iOut с 0, а iOutLen = 1
+	// РµСЃР»Рё РєРѕР»-РІРѕ СЌР»-РѕРІ iOutLen СЂР°РІРЅРѕ 0, С‚РѕРіРґР° РІРѕР·РІСЂР°С‰Р°РµС‚ iOut СЃ 0, Р° iOutLen = 1
 	if (iOutLen == 0)
 	{
 		int* iOut = new int[1] {0};
@@ -324,7 +324,7 @@ int* SeparateNegAndPosItems2pass(int* iData, int iLen, int& iOutLen)
 	{
 		int* iOut = new int[iOutLen] {0};
 
-		// заполняем iOut элементами
+		// Р·Р°РїРѕР»РЅСЏРµРј iOut СЌР»РµРјРµРЅС‚Р°РјРё
 		for (int i = 0, j = 0, k = iOutLen - 1; i < iLen; i++)
 		{
 			if (iData[i] < 0)
@@ -345,12 +345,12 @@ int* SeparateNegAndPosItems2pass(int* iData, int iLen, int& iOutLen)
 
 void Task1_2_5()
 {
-	// переменная для числа элементов массива iOut
+	// РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ С‡РёСЃР»Р° СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° iOut
 	int iOutLen = 0;
-	// массив iOut
+	// РјР°СЃСЃРёРІ iOut
 	int* iOut = SeparateNegAndPosItems2pass(global_iDataArray, global_iDataArray_Len, iOutLen);
 
-	// вывод массива iOut
+	// РІС‹РІРѕРґ РјР°СЃСЃРёРІР° iOut
 	cout << "iOut:" << "\n";
 	for (int i = 0; i < iOutLen; i++)
 	{
@@ -360,7 +360,7 @@ void Task1_2_5()
 	delete[]iOut;
 }
 
-// Задача 6.
+// Р—Р°РґР°С‡Р° 6.
 
 int GetNextNegItemIdx(int*& iData, int iBegIdx, int iLen)
 {
@@ -407,7 +407,7 @@ int GetNextNegItemIdx_2(int*& iData, int iBegIdx, int iLen)
 
 void Task1_2_6()
 {
-	// определяем длину массива iData через задание iLen
+	// РѕРїСЂРµРґРµР»СЏРµРј РґР»РёРЅСѓ РјР°СЃСЃРёРІР° iData С‡РµСЂРµР· Р·Р°РґР°РЅРёРµ iLen
 	int iLen = 0;
 	cout << "\nTask 6: iBegIdxClose.\n";
 	cout << "iData Length: iLen = ";
@@ -415,10 +415,10 @@ void Task1_2_6()
 
 	if (iLen == 0) return;
 
-	// объявление массива iData
+	// РѕР±СЉСЏРІР»РµРЅРёРµ РјР°СЃСЃРёРІР° iData
 	int* iData = new int[iLen] {0};
 
-	// задание элементов массива iData
+	// Р·Р°РґР°РЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° iData
 	for (int i = 0, k = 0; i < iLen; i++)
 	{
 		cout << "iData[" << i << "] = ";
@@ -427,24 +427,24 @@ void Task1_2_6()
 		k = 0;
 	}
 
-	// задать iBegIdx
+	// Р·Р°РґР°С‚СЊ iBegIdx
 	int iBegIdx = 0;
 	cout << "iBegIdx = ";
 	cin >> iBegIdx;
 
 	if (iBegIdx < 0 || iBegIdx >= iLen)
 	{
-		// очистка памяти
+		// РѕС‡РёСЃС‚РєР° РїР°РјСЏС‚Рё
 		delete[]iData;
 		return;
 	}
 	
-	// находим iBegIdxClose
+	// РЅР°С…РѕРґРёРј iBegIdxClose
 	int iBegIdxClose = GetNextNegItemIdx(iData, iBegIdx, iLen);
-	// вывод iBegIdxClose
+	// РІС‹РІРѕРґ iBegIdxClose
 	if (iBegIdxClose >= -1) cout << "iBegIdxClose = " << iBegIdxClose;
 	if (iBegIdxClose < -1) cout << "iBegIdxClose = -1 * (iBegIdxClose_i + iBegIdxClose_j) = " << iBegIdxClose;
 
-	// очистка памяти
+	// РѕС‡РёСЃС‚РєР° РїР°РјСЏС‚Рё
 	delete[]iData;
 }

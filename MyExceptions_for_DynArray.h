@@ -10,7 +10,7 @@ struct MyExceptions_for_DynArray : public std::exception
 
 	MyExceptions_for_DynArray(ExceptionType_for_DynArray Exception) : Exception(Exception) {};
 	
-	const char* What() const noexcept // noexcept() == noexcept(true) - вместо throw()
+	const char* What() const noexcept // noexcept() == noexcept(true) - РІРјРµСЃС‚Рѕ throw()
 	{
 		return stringExceptionType_for_DynArray[int(Exception)].c_str();
 	}

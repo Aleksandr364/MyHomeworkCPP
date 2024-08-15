@@ -16,23 +16,23 @@ void invalidMemoryAccess()
 
 void GenerateException(int x)
 {
-	if (x > 100) throw 0; // throw - оператор для генерации исключения "выбросить исключение"
+	if (x > 100) throw 0; // throw - РѕРїРµСЂР°С‚РѕСЂ РґР»СЏ РіРµРЅРµСЂР°С†РёРё РёСЃРєР»СЋС‡РµРЅРёСЏ "РІС‹Р±СЂРѕСЃРёС‚СЊ РёСЃРєР»СЋС‡РµРЅРёРµ"
 	std::cout << "\nFunc\n";
 }
 
 
 void TestException()
 {
-	// GenerateException(101); // незащищенный код, приводит к аварийному завершению программы
+	// GenerateException(101); // РЅРµР·Р°С‰РёС‰РµРЅРЅС‹Р№ РєРѕРґ, РїСЂРёРІРѕРґРёС‚ Рє Р°РІР°СЂРёР№РЅРѕРјСѓ Р·Р°РІРµСЂС€РµРЅРёСЋ РїСЂРѕРіСЂР°РјРјС‹
 	
-	// try{} - защищенный код (который будет искать обработчик исключений)
+	// try{} - Р·Р°С‰РёС‰РµРЅРЅС‹Р№ РєРѕРґ (РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РёСЃРєР°С‚СЊ РѕР±СЂР°Р±РѕС‚С‡РёРє РёСЃРєР»СЋС‡РµРЅРёР№)
 	try
 	{
 		GenerateException(0);
 		GenerateException(101);
 	}
 
-	// catch (...) - фильтр обработки исключений (если ... - значит всех)
+	// catch (...) - С„РёР»СЊС‚СЂ РѕР±СЂР°Р±РѕС‚РєРё РёСЃРєР»СЋС‡РµРЅРёР№ (РµСЃР»Рё ... - Р·РЅР°С‡РёС‚ РІСЃРµС…)
 	catch (...)
 	{
 		std::cout << "\nException!";
@@ -66,19 +66,19 @@ void Exceptions()
 		//GenerateException(101);
 	}
 	
-	// если throw 0 (целое число)
+	// РµСЃР»Рё throw 0 (С†РµР»РѕРµ С‡РёСЃР»Рѕ)
 	catch (int e)
 	{
 		std::cout << "error = " << e << "\n";
 	}
 
-	// если throw ExceptionType::filenotopen
+	// РµСЃР»Рё throw ExceptionType::filenotopen
 	catch (ExceptionType e)
 	{
 		std::cout << "error = " << (int)e << "\n";
 	}
 
-	// если throw MyExceptions(ExceptionType::filenotopen)
+	// РµСЃР»Рё throw MyExceptions(ExceptionType::filenotopen)
 	catch (MyExceptions &error)
 	{
 		std::cout << "\nMyException!\n";
@@ -109,9 +109,9 @@ void TestSEH()
 			invalidMemoryAccess();
 		}
 
-		// EXCEPTION_EXECUTE_HANDLER - обработчик исключения
-		// EXCEPTION_CONTINUE_EXECUTION - установить возможность исправления ошибки
-		// EXCEPTION_CONTINUE_SEARCH - продолжить искать обработчик выше по стеку
+		// EXCEPTION_EXECUTE_HANDLER - РѕР±СЂР°Р±РѕС‚С‡РёРє РёСЃРєР»СЋС‡РµРЅРёСЏ
+		// EXCEPTION_CONTINUE_EXECUTION - СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РёСЃРїСЂР°РІР»РµРЅРёСЏ РѕС€РёР±РєРё
+		// EXCEPTION_CONTINUE_SEARCH - РїСЂРѕРґРѕР»Р¶РёС‚СЊ РёСЃРєР°С‚СЊ РѕР±СЂР°Р±РѕС‚С‡РёРє РІС‹С€Рµ РїРѕ СЃС‚РµРєСѓ
 		__except (EXCEPTION_EXECUTE_HANDLER)
 		{
 			std::cout << "\nTestSEH __except\n";

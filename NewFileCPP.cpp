@@ -2,7 +2,7 @@
 #include "NewFileH.h"
 #include "Global.h"
 
-// Глобальный массив.
+// Р“Р»РѕР±Р°Р»СЊРЅС‹Р№ РјР°СЃСЃРёРІ.
 int global_iDataArray_1_4[]{ 0, 42, -4, 10, 0, 55, -134, 0, 1, 6, -8, 4, 2, -1, 0, 7, 8, 3, 2, 10, 5, -1, -2, -6, -34, 0 };
 const int global_iDataArray_Len_1_4 = sizeof(global_iDataArray_1_4) / sizeof(int);
 
@@ -101,13 +101,13 @@ int* ReadBINFileInt(const char* FileName, int& FileLen)
 
 	if (err || !file) return 0;
 
-	// fseek() - перемещение внутри файла в указанную позицию (в данном случае устанавливается в последнюю позицию: "ноль от конца файла")
+	// fseek() - РїРµСЂРµРјРµС‰РµРЅРёРµ РІРЅСѓС‚СЂРё С„Р°Р№Р»Р° РІ СѓРєР°Р·Р°РЅРЅСѓСЋ РїРѕР·РёС†РёСЋ (РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ РІ РїРѕСЃР»РµРґРЅСЋСЋ РїРѕР·РёС†РёСЋ: "РЅРѕР»СЊ РѕС‚ РєРѕРЅС†Р° С„Р°Р№Р»Р°")
 	fseek(file, 0, SEEK_END);
 
-	// ftell() - возвращает текущую позицию в файле file  в виде числа
+	// ftell() - РІРѕР·РІСЂР°С‰Р°РµС‚ С‚РµРєСѓС‰СѓСЋ РїРѕР·РёС†РёСЋ РІ С„Р°Р№Р»Рµ file  РІ РІРёРґРµ С‡РёСЃР»Р°
 	int iSize = ftell(file);
 
-	// для дальнейшей работы снова возвращаем в начальное (нулевое) значению позицию в файле
+	// РґР»СЏ РґР°Р»СЊРЅРµР№С€РµР№ СЂР°Р±РѕС‚С‹ СЃРЅРѕРІР° РІРѕР·РІСЂР°С‰Р°РµРј РІ РЅР°С‡Р°Р»СЊРЅРѕРµ (РЅСѓР»РµРІРѕРµ) Р·РЅР°С‡РµРЅРёСЋ РїРѕР·РёС†РёСЋ РІ С„Р°Р№Р»Рµ
 	fseek(file, 0, SEEK_SET);
 
 	FileLen = iSize / sizeof(int);
@@ -129,13 +129,13 @@ float* ReadBINFileFloat(const char* FileName, int& FileLen)
 
 	if (err || !file) return 0;
 
-	// fseek() - перемещение внутри файла в указанную позицию (в данном случае устанавливается в последнюю позицию: "ноль от конца файла")
+	// fseek() - РїРµСЂРµРјРµС‰РµРЅРёРµ РІРЅСѓС‚СЂРё С„Р°Р№Р»Р° РІ СѓРєР°Р·Р°РЅРЅСѓСЋ РїРѕР·РёС†РёСЋ (РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ РІ РїРѕСЃР»РµРґРЅСЋСЋ РїРѕР·РёС†РёСЋ: "РЅРѕР»СЊ РѕС‚ РєРѕРЅС†Р° С„Р°Р№Р»Р°")
 	fseek(file, 0, SEEK_END);
 
-	// ftell() - возвращает текущую позицию в файле file  в виде числа
+	// ftell() - РІРѕР·РІСЂР°С‰Р°РµС‚ С‚РµРєСѓС‰СѓСЋ РїРѕР·РёС†РёСЋ РІ С„Р°Р№Р»Рµ file  РІ РІРёРґРµ С‡РёСЃР»Р°
 	int iSize = ftell(file);
 
-	// для дальнейшей работы снова возвращаем в начальное (нулевое) значению позицию в файле
+	// РґР»СЏ РґР°Р»СЊРЅРµР№С€РµР№ СЂР°Р±РѕС‚С‹ СЃРЅРѕРІР° РІРѕР·РІСЂР°С‰Р°РµРј РІ РЅР°С‡Р°Р»СЊРЅРѕРµ (РЅСѓР»РµРІРѕРµ) Р·РЅР°С‡РµРЅРёСЋ РїРѕР·РёС†РёСЋ РІ С„Р°Р№Р»Рµ
 	fseek(file, 0, SEEK_SET);
 
 	FileLen = iSize / sizeof(float);
@@ -160,7 +160,7 @@ int FileReadGetLinesCount(const char* FileName)
 	char line[128]{};
 
 	int count = 0;
-	// fgets() - читает одну строку символов из файла в буфер: char line[128]{}
+	// fgets() - С‡РёС‚Р°РµС‚ РѕРґРЅСѓ СЃС‚СЂРѕРєСѓ СЃРёРјРІРѕР»РѕРІ РёР· С„Р°Р№Р»Р° РІ Р±СѓС„РµСЂ: char line[128]{}
 	while (fgets(line, sizeof(line), file)) count++;
 
 	fclose(file);
@@ -241,14 +241,14 @@ size_t TestFileRead(const char* FileName, char* buffer, const int buffLen)
 TestStruct* TestFileReadStruct(const char* FileName)
 {
 	TestStruct* Struct = new TestStruct;
-	FILE* file = nullptr; // указатель на дескриптор файла
+	FILE* file = nullptr; // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РґРµСЃРєСЂРёРїС‚РѕСЂ С„Р°Р№Р»Р°
 	
-	errno_t err = fopen_s(&file, FileName, "r"); // возвращает дескриптор &file
+	errno_t err = fopen_s(&file, FileName, "r"); // РІРѕР·РІСЂР°С‰Р°РµС‚ РґРµСЃРєСЂРёРїС‚РѕСЂ &file
 
 	if (err || !file) return 0;
 
 	size_t realSize = fread(Struct, 1, sizeof(TestStruct), file);
-	fclose(file); // файл необходимо ОБЯЗАТЕЛЬНО закрывать (после закрытия с ним нельзя работать)
+	fclose(file); // С„Р°Р№Р» РЅРµРѕР±С…РѕРґРёРјРѕ РћР‘РЇР—РђРўР•Р›Р¬РќРћ Р·Р°РєСЂС‹РІР°С‚СЊ (РїРѕСЃР»Рµ Р·Р°РєСЂС‹С‚РёСЏ СЃ РЅРёРј РЅРµР»СЊР·СЏ СЂР°Р±РѕС‚Р°С‚СЊ)
 	
 	if (realSize != sizeof(TestStruct)) return nullptr;
 	return Struct;
@@ -264,14 +264,14 @@ int TestFileWriteStruct(const char* FileName)
 	my_strcpy(Struct.Name1, (char*)"Hello ");
 	my_strcpy(Struct.Name2, (char*)"World!");
 
-	FILE* file = nullptr; // указатель на дескриптор файла
+	FILE* file = nullptr; // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РґРµСЃРєСЂРёРїС‚РѕСЂ С„Р°Р№Р»Р°
 
-	errno_t err = fopen_s(&file, FileName, "a+"); // возвращает дескриптор &file
+	errno_t err = fopen_s(&file, FileName, "a+"); // РІРѕР·РІСЂР°С‰Р°РµС‚ РґРµСЃРєСЂРёРїС‚РѕСЂ &file
 
 	if (err || !file) return 0;
 
 	size_t realSize = fwrite(&Struct, 1, sizeof(TestStruct), file);
-	fclose(file); // файл необходимо ОБЯЗАТЕЛЬНО закрывать (после закрытия с ним нельзя работать)
+	fclose(file); // С„Р°Р№Р» РЅРµРѕР±С…РѕРґРёРјРѕ РћР‘РЇР—РђРўР•Р›Р¬РќРћ Р·Р°РєСЂС‹РІР°С‚СЊ (РїРѕСЃР»Рµ Р·Р°РєСЂС‹С‚РёСЏ СЃ РЅРёРј РЅРµР»СЊР·СЏ СЂР°Р±РѕС‚Р°С‚СЊ)
 	
 	if (realSize != sizeof(TestStruct)) return 0;
 	return 1;
@@ -279,14 +279,14 @@ int TestFileWriteStruct(const char* FileName)
 
 int TestFileWriteStruct2(TestStruct& Struct, const char* FileName)
 {
-	FILE* file = nullptr; // указатель на дескриптор файла
+	FILE* file = nullptr; // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РґРµСЃРєСЂРёРїС‚РѕСЂ С„Р°Р№Р»Р°
 
-	errno_t err = fopen_s(&file, FileName, "a+"); // возвращает дескриптор &file
+	errno_t err = fopen_s(&file, FileName, "a+"); // РІРѕР·РІСЂР°С‰Р°РµС‚ РґРµСЃРєСЂРёРїС‚РѕСЂ &file
 
 	if (err || !file) return 0;
 
 	size_t realSize = fwrite(&Struct, 1, sizeof(TestStruct), file);
-	fclose(file); // файл необходимо ОБЯЗАТЕЛЬНО закрывать (после закрытия с ним нельзя работать)
+	fclose(file); // С„Р°Р№Р» РЅРµРѕР±С…РѕРґРёРјРѕ РћР‘РЇР—РђРўР•Р›Р¬РќРћ Р·Р°РєСЂС‹РІР°С‚СЊ (РїРѕСЃР»Рµ Р·Р°РєСЂС‹С‚РёСЏ СЃ РЅРёРј РЅРµР»СЊР·СЏ СЂР°Р±РѕС‚Р°С‚СЊ)
 
 	if (realSize != sizeof(TestStruct)) return 0;
 	return 1;
@@ -312,16 +312,16 @@ void TestFileWriteStructArray(const char* FileName)
 
 size_t TestFileReadStruct2(TestStruct& Struct, const char* FileName, int poz)
 {
-	FILE* file = nullptr; // указатель на дескриптор файла
+	FILE* file = nullptr; // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РґРµСЃРєСЂРёРїС‚РѕСЂ С„Р°Р№Р»Р°
 
-	errno_t err = fopen_s(&file, FileName, "r"); // возвращает дескриптор &file
+	errno_t err = fopen_s(&file, FileName, "r"); // РІРѕР·РІСЂР°С‰Р°РµС‚ РґРµСЃРєСЂРёРїС‚РѕСЂ &file
 
 	if (err || !file) return 0;
 
-	fseek(file, poz, SEEK_SET); // смещение в файле от начала на poz байт
+	fseek(file, poz, SEEK_SET); // СЃРјРµС‰РµРЅРёРµ РІ С„Р°Р№Р»Рµ РѕС‚ РЅР°С‡Р°Р»Р° РЅР° poz Р±Р°Р№С‚
 
 	size_t realSize = fread(&Struct, 1, sizeof(TestStruct), file);
-	fclose(file); // файл необходимо ОБЯЗАТЕЛЬНО закрывать (после закрытия с ним нельзя работать)
+	fclose(file); // С„Р°Р№Р» РЅРµРѕР±С…РѕРґРёРјРѕ РћР‘РЇР—РђРўР•Р›Р¬РќРћ Р·Р°РєСЂС‹РІР°С‚СЊ (РїРѕСЃР»Рµ Р·Р°РєСЂС‹С‚РёСЏ СЃ РЅРёРј РЅРµР»СЊР·СЏ СЂР°Р±РѕС‚Р°С‚СЊ)
 
 	return realSize;
 }

@@ -25,8 +25,8 @@ void TestFileReadStructArray(const char* FileName);
 size_t TestFileReadStruct2(TestStruct& Struct, const char* FileName, int poz);
 int TestFileWriteStruct2(TestStruct& Struct, const char* FileName);
 
-#pragma pack(push) // упаковка - размещение структур: push - сохранить текущее значение (препроцессор) 
-#pragma pack(1) // установка значения pack равная единице (граница = 1 байт, отменяется "выравнивание" под кратность 4)
+#pragma pack(push) // СѓРїР°РєРѕРІРєР° - СЂР°Р·РјРµС‰РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂ: push - СЃРѕС…СЂР°РЅРёС‚СЊ С‚РµРєСѓС‰РµРµ Р·РЅР°С‡РµРЅРёРµ (РїСЂРµРїСЂРѕС†РµСЃСЃРѕСЂ) 
+#pragma pack(1) // СѓСЃС‚Р°РЅРѕРІРєР° Р·РЅР°С‡РµРЅРёСЏ pack СЂР°РІРЅР°СЏ РµРґРёРЅРёС†Рµ (РіСЂР°РЅРёС†Р° = 1 Р±Р°Р№С‚, РѕС‚РјРµРЅСЏРµС‚СЃСЏ "РІС‹СЂР°РІРЅРёРІР°РЅРёРµ" РїРѕРґ РєСЂР°С‚РЅРѕСЃС‚СЊ 4)
 struct ID3v24Header
 {
 	char ID[3]{};
@@ -35,7 +35,7 @@ struct ID3v24Header
 	int8_t Flags = 0;
 	int32_t Size = 0;
 };
-#pragma pack(pop) // восстановить предыдущую границу упаковки
+#pragma pack(pop) // РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїСЂРµРґС‹РґСѓС‰СѓСЋ РіСЂР°РЅРёС†Сѓ СѓРїР°РєРѕРІРєРё
 
 ID3v24Header* ReadHeader(const char* FileName);
 

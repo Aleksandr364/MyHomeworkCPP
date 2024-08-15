@@ -3,7 +3,7 @@
 
 #define TIMEARRAYSIZE 30
 
-// создание типа "указатель на функцию" *FuncPtrType
+// СЃРѕР·РґР°РЅРёРµ С‚РёРїР° "СѓРєР°Р·Р°С‚РµР»СЊ РЅР° С„СѓРЅРєС†РёСЋ" *FuncPtrType
 typedef int (*FuncPtrType)(float);
 typedef void (*trimFuncType)(char*);
 
