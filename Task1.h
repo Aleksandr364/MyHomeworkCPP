@@ -61,8 +61,6 @@ void Task1_3_12();
 
 void TestArray2D();
 
-
-
 void TestFunc_1();
 
 void TestFunc_2();

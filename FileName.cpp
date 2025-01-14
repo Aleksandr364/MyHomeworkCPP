@@ -1,12 +1,12 @@
 #include <vector>
-#include ""
+#include "ClassesTask1.h"
 
 
 void Test123()
 {
-	NewRect rect();
+	Rect rect();
 
-	std::vector<NewRect> array;
+	std::vector<Rect> array;
 
 	array.push_back(rect);
 }

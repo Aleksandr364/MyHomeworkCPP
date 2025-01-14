@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClCompile Include="Classes1.cpp" />
     <ClCompile Include="Classes2.h" />
+    <ClCompile Include="FileName.cpp" />
     <ClCompile Include="HashFunc.cpp" />
     <ClCompile Include="SQLExample.cpp" />
     <ClCompile Include="Exceptions.cpp" />
@@ -144,6 +145,7 @@
     <ClCompile Include="Task1.2.cpp" />
     <ClCompile Include="Task1.3.cpp" />
     <ClCompile Include="Task1.1.cpp" />
+    <ClCompile Include="TestFunc1.cpp" />
     <ClCompile Include="Test_DynArray.cpp" />
   </ItemGroup>
   <ItemGroup>
